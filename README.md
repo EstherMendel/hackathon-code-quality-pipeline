@@ -315,21 +315,6 @@ run_pipeline(
 )
 ```
 
-## Retrying failed elbow runs
-
-The code can also rerun only elbow extraction for projects that previously failed due to GitHub DNS or connection errors.
-
-This is useful when failures were caused by temporary network problems rather than repository-specific problems.
-
-The retry helper selects projects where:
-
-* `project_uid` is present,
-* `github_link` is present,
-* `elbow_status = 'error'`,
-* `elbow_error` contains a GitHub DNS failure message.
-
-Before rerunning, the helper clears only the failed elbow fields. It does not modify the core metrics.
-
 ## Progress and resume behavior
 
 The pipeline can store progress files so interrupted runs can be resumed.
@@ -433,18 +418,3 @@ The JavaScript/TypeScript extractor computes:
 * declared dependencies from `package.json`,
 * internal fan-in and fan-out,
 * parse success and parse failure counts.
-
-## Reproducibility notes
-
-The exact results depend on:
-
-* the input database,
-* repository availability on GitHub,
-* commit history at the time of cloning,
-* installed Python and Node package versions,
-* parser behavior,
-* configured analysis dates,
-* file filtering rules,
-* timeout settings.
-
-For reproducibility, the output databases should be archived together with the analysis scripts and the final thesis analysis code.
