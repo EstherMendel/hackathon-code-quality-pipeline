@@ -1,0 +1,13 @@
+{
+  "name": "repository-metric-extraction",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Node dependencies for JavaScript and TypeScript repository metric extraction.",
+  "main": "js_analyzer.js",
+  "scripts": {
+    "test:js-analyzer": "node js_analyzer.js"
+  },
+  "dependencies": {
+    "@typescript-eslint/typescript-estree": "^8.0.0"
+  }
+}
